@@ -1,9 +1,9 @@
 def notacion_hexadecimal(color)
-  "%02X" % color[0] + "%02X" % color[1] + "%02X" % color[2]
+  "#" + color.map{ |c| "%02X" % c }.join
 end
 
 def notacion_entera(color)
-  color[0] + color[1]*256 + color[2]*256*256
+  color.map.with_index{ |c, index| c * (256 ** index) }.sum
 end
 
 puts notacion_hexadecimal([0, 128, 255])
