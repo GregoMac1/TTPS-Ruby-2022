@@ -53,6 +53,18 @@ class Redactor < Lector
   end
 end
 
-class Director < Redactor
+class Director < Lector
+  def puede_ver?(documento)
+    !documento.borrado
+  end
 
+  def puede_modificar?(documento)
+    !documento.borrado
+  end
+end
+
+class Administrador < Director
+  def puede_borrar?(documento)
+    true
+  end
 end
